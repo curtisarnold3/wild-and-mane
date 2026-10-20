@@ -158,10 +158,10 @@
   @media (min-width:861px){.room[data-frame="walnut"] .frame,.room[data-frame="natural"] .frame{border-width:.32vw}}
   .room[data-size="11x14"] .print{width:11.5%}
   .room[data-size="16x20"] .print{width:16.5%}
-  .room[data-size="24x30"] .print{width:24.5%}
+  .room[data-size="12x16"] .print{width:12.5%}
   .room[data-frame="none"][data-size="11x14"] .print{width:8.8%}
   .room[data-frame="none"][data-size="16x20"] .print{width:12.8%}
-  .room[data-frame="none"][data-size="24x30"] .print{width:19.2%}
+  .room[data-frame="none"][data-size="12x16"] .print{width:9.6%}
   .choices h3{margin-bottom:.4rem}
   .choices p{margin-bottom:1.2rem}
   fieldset{border:0;padding:0;margin:0 0 1.4rem}
@@ -345,8 +345,8 @@
         <legend>Size</legend>
         <div class="chips">
           <label><input type="radio" name="size" value="11x14" onchange="setRoom()"> 11 × 14</label>
+          <label><input type="radio" name="size" value="12x16" onchange="setRoom()"> 12 × 16</label>
           <label><input type="radio" name="size" value="16x20" checked onchange="setRoom()"> 16 × 20</label>
-          <label><input type="radio" name="size" value="24x30" onchange="setRoom()"> 24 × 30</label>
         </div>
       </fieldset>
       <fieldset>
@@ -357,7 +357,7 @@
           <label><input type="radio" name="frame" value="natural" onchange="setRoom()"> Natural oak frame</label>
         </div>
       </fieldset>
-      <div class="price" id="price">$119<small>framed 16 × 20</small></div>
+      <div class="price" id="price">$225<small>framed by hand 16 × 20</small></div>
       <p>Prints ship in [X]–[X] business days. Framed prints arrive ready to hang. Local pickup in Florissant for hand-framed work.</p>
       <a class="btn" href="[ETSY SHOP URL]">Choose a print</a>
     </div>
@@ -427,7 +427,7 @@
       </li>
       <li>
         <img src="images/about2.jpg" alt="" loading="lazy">
-        <div><strong>Ready to hang</strong><p>Framed 16 × 20 in walnut or oak, with hanging hardware on. Open the box, find a nail.</p><a class="link" href="[ETSY SHOP URL]">Shop framed</a></div>
+        <div><strong>Ready to hang</strong><p>Framed 12 × 16 in walnut or oak, with hanging hardware on. Open the box, find a nail.</p><a class="link" href="[ETSY SHOP URL]">Shop framed</a></div>
       </li>
       <li>
         <img src="images/edition.jpg" alt="" loading="lazy">
@@ -491,15 +491,15 @@
     btn.setAttribute('aria-expanded',open?'true':'false');
   }
   // On-the-wall preview. Prices: change these numbers once hers are final.
-  var prices={ "11x14":{none:38, walnut:119, natural:119},
-               "16x20":{none:"[PRICE]", walnut:119, natural:119},
-               "24x30":{none:"[PRICE]", walnut:"[PRICE]", natural:"[PRICE]"} };
+  var prices={ "11x14":{none:38, walnut:"[PRICE]", natural:"[PRICE]"},
+               "12x16":{none:"[PRICE]", walnut:119, natural:119},
+               "16x20":{none:"[PRICE]", walnut:225, natural:225} };
   function setRoom(){
     var size=document.querySelector('input[name=size]:checked').value;
     var frame=document.querySelector('input[name=frame]:checked').value;
     var room=document.getElementById('room');
     room.dataset.size=size; room.dataset.frame=frame;
-    var p=prices[size][frame]; var label=(frame==='none'?'unframed ':'framed ')+size.replace('x',' × ');
+    var p=prices[size][frame]; var label=(frame==='none'?'unframed ':size==='16x20'?'framed by hand ':'framed ')+size.replace('x',' × ');
     document.getElementById('price').innerHTML=(typeof p==='number'?'$'+p:p)+'<small>'+label+'</small>';
   }
 </script>

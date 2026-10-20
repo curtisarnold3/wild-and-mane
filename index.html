@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wild &amp; Mane — Faceless western cowgirl prints from Colorado</title>
+<meta name="description" content="Wild and free. Real cowgirls, real horses, real Colorado land, photographed by a woman who rides. Framed and unframed prints. Never AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ---------- tokens: high plains ---------- */
+  :root{
+    --dust:#E7E0D1;      /* dried grass, page base */
+    --dust-deep:#D8CFBC; /* a shade down, for bands and rules */
+    --storm:#23292E;     /* storm cloud ink */
+    --saddle:#6B3A1F;    /* oiled saddle leather */
+    --sage:#6F7D62;      /* sagebrush */
+    --sky:#C4D1D8;       /* thin high-altitude sky */
+    --bone:#F4F0E7;      /* mat board */
+    --display:"Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+    --body:"Lora", Georgia, "Times New Roman", serif;
+    --measure:62ch;
+    --gutter:clamp(1rem, 4vw, 3.5rem);
+    --ease:cubic-bezier(.2,.7,.2,1);
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *,*::before,*::after{box-sizing:inherit}
+  html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+  body{
+    margin:0;background:var(--dust);color:var(--storm);
+    font-family:var(--body);font-size:1.0625rem;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--display);font-weight:700;line-height:.95;letter-spacing:-.01em;margin:0}
+  h2{font-size:clamp(2.4rem,5.5vw,4.5rem);margin-bottom:.6rem}
+  h3{font-size:clamp(1.4rem,2.4vw,1.9rem);font-weight:500}
+  p{margin:0 0 1rem;max-width:var(--measure)}
+  :focus-visible{outline:3px solid var(--saddle);outline-offset:3px}
+  .skip{position:absolute;left:-999px;top:0;background:var(--storm);color:var(--bone);padding:.6rem 1rem;z-index:50}
+  .skip:focus{left:1rem;top:1rem}
+  .wrap{padding-inline:var(--gutter)}
+  section{padding-block:clamp(3.5rem,9vw,7.5rem)}
+
+  /* buttons: cut like a feed-store sign, square corners, one weight */
+  .btn{
+    display:inline-block;font-family:var(--display);font-weight:700;font-size:1.25rem;
+    letter-spacing:.02em;text-decoration:none;padding:.8rem 1.5rem;
+    background:var(--storm);color:var(--bone);border:2px solid var(--storm);
+    transition:background .2s,color .2s,transform .2s var(--ease);
+  }
+  .btn:hover{background:var(--saddle);border-color:var(--saddle)}
+  .btn--ghost{background:transparent;color:var(--storm)}
+  .btn--ghost:hover{background:var(--storm);color:var(--bone)}
+  .btn--light{background:var(--bone);color:var(--storm);border-color:var(--bone)}
+  .btn--light:hover{background:var(--storm);color:var(--bone);border-color:var(--storm)}
+  .link{font-family:var(--display);font-weight:700;font-size:1.2rem;letter-spacing:.02em;text-decoration:none;border-bottom:2px solid currentColor;padding-bottom:1px}
+  .link:hover{color:var(--saddle)}
+
+  /* ---------- header ---------- */
+  header{position:absolute;top:0;left:0;right:0;z-index:10;color:var(--bone);padding-top:env(safe-area-inset-top,0px)}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1.1rem}
+  .brandmark{display:flex;align-items:center;gap:.7rem;text-decoration:none;font-family:var(--display);font-weight:700;font-size:1.35rem;letter-spacing:.04em}
+  .brandmark svg{width:44px;height:44px}
+  .brandmark em{font-style:normal;font-weight:500;opacity:.85}
+  nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1.6rem}
+  nav a{font-family:var(--display);font-weight:500;font-size:1.15rem;letter-spacing:.03em;text-decoration:none;padding:.3rem 0;border-bottom:2px solid transparent}
+  nav a:hover{border-bottom-color:currentColor}
+  .menu-btn{display:none;background:none;border:2px solid currentColor;color:inherit;font-family:var(--display);font-size:1.1rem;padding:.4rem .8rem;cursor:pointer}
+  @media (max-width:760px){
+    .menu-btn{display:inline-block}
+    nav ul{display:none;position:absolute;right:var(--gutter);top:4.4rem;flex-direction:column;gap:0;background:var(--storm);color:var(--bone);padding:.6rem 1.2rem;min-width:12rem}
+    nav ul.open{display:flex}
+    nav li{padding:.4rem 0}
+  }
+
+  /* ---------- hero: the one memorable moment ---------- */
+  .hero{position:relative;min-height:100svh;display:grid;align-items:end;overflow:hidden;background:var(--storm);color:var(--bone)}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:35% 50%;filter:brightness(.95)}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,24,28,.72) 0%,rgba(20,24,28,.15) 45%,rgba(20,24,28,0) 70%)}
+  .hero-inner{position:relative;z-index:2;padding-bottom:clamp(2rem,6vw,4.5rem)}
+  @media (min-width:900px){.hero-inner{width:46%;margin-left:auto}}
+  .hero-kicker{font-family:var(--display);font-weight:500;font-size:1.25rem;letter-spacing:.04em;margin:0 0 .4rem}
+  .hero h1{
+    font-size:clamp(6rem,19vw,17rem);line-height:.82;letter-spacing:-.03em;
+    margin-left:-.04em; /* optical alignment of the W */
+  }
+  .hero h1 span{display:block}
+  .hero h1 .amp{font-weight:500;font-style:normal;font-size:.55em;line-height:1;display:inline;vertical-align:.3em;margin:0 .05em;opacity:.85}
+  .hero-sub{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:1.2rem 3rem;margin-top:1.4rem}
+  .hero-sub p{font-size:1.15rem;max-width:34ch;margin:0}
+  @media (max-width:760px){
+    .hero::after{background:linear-gradient(to top,rgba(20,24,28,.88) 0%,rgba(20,24,28,.55) 50%,rgba(20,24,28,.1) 80%)}
+    .hero img{object-position:40% 50%}
+  }
+  .hero-cta{display:flex;flex-wrap:wrap;gap:.75rem}
+  /* page-load reveal: the photo settles, the words ride in. One moment, then quiet. */
+  @media (prefers-reduced-motion:no-preference){
+    .hero img{transform:scale(1.06);animation:settle 1.8s var(--ease) forwards}
+    .hero h1 span, .hero-kicker, .hero-sub{opacity:0;transform:translateY(24px);animation:ride .9s var(--ease) forwards}
+    .hero-kicker{animation-delay:.25s}
+    .hero h1 span:nth-child(1){animation-delay:.35s}
+    .hero h1 span:nth-child(2){animation-delay:.5s}
+    .hero-sub{animation-delay:.75s}
+    @keyframes settle{to{transform:scale(1)}}
+    @keyframes ride{to{opacity:1;transform:none}}
+  }
+
+  /* ---------- proof: how you can tell it's real ---------- */
+  .proof{background:var(--storm);color:var(--bone);padding-block:0}
+  .proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr))}
+  .proof-item{display:grid;grid-template-columns:5.5rem 1fr;gap:1rem;align-items:center;padding:1.6rem var(--gutter);border-top:1px solid rgba(244,240,231,.18)}
+  .proof-item + .proof-item{border-left:1px solid rgba(244,240,231,.18)}
+  .proof-item img{width:5.5rem;height:5.5rem;object-fit:cover}
+  .proof-item strong{font-family:var(--display);font-weight:700;font-size:1.45rem;display:block;line-height:1.05;margin-bottom:.15rem}
+  .proof-item p{margin:0;font-size:.98rem;color:#D6CFC2}
+  @media (max-width:760px){.proof-item + .proof-item{border-left:0}}
+
+  /* ---------- the collection: photos first, type in the gaps ---------- */
+  .intro{display:grid;grid-template-columns:1fr 1fr;gap:2rem 4rem;align-items:end;margin-bottom:clamp(2rem,5vw,3.5rem)}
+  @media (max-width:760px){.intro{grid-template-columns:1fr}}
+  .intro p{margin:0}
+  .moods{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(9rem,auto);gap:clamp(.6rem,1.5vw,1.2rem)}
+  .mood{position:relative;display:block;overflow:hidden;text-decoration:none;color:var(--bone);background:var(--storm)}
+  .mood img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+  .mood::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(to top,rgba(20,24,28,.6),rgba(20,24,28,0));pointer-events:none}
+  .mood .tag{z-index:1}
+  .mood:hover img{transform:scale(1.03)}
+  .mood .tag{position:absolute;left:1rem;bottom:.8rem;font-family:var(--display);font-weight:700;font-size:clamp(2rem,4vw,3.4rem);line-height:.9;letter-spacing:-.01em;text-shadow:0 1px 18px rgba(0,0,0,.45)}
+  .mood .tag small{display:block;font-weight:500;font-size:1.05rem;letter-spacing:.03em;margin-top:.35rem;text-shadow:none;opacity:.92}
+  .m1{grid-column:1/8;grid-row:1/3}
+  .m2{grid-column:8/13;grid-row:1/2}
+  .m3{grid-column:8/13;grid-row:2/3}
+  .m4{grid-column:1/13;grid-row:3/4;min-height:22rem}
+  @media (max-width:760px){
+    .m1,.m2,.m3,.m4{grid-column:1/13;grid-row:auto;min-height:16rem}
+    .m1{min-height:22rem}
+  }
+
+  /* ---------- on the wall ---------- */
+  .wall{background:var(--dust-deep)}
+  .wall-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:3rem;align-items:center}
+  @media (max-width:860px){.wall-grid{grid-template-columns:1fr}}
+  .room{position:relative;overflow:hidden;background:#D9D3C9}
+  .room-photo{width:100%;height:auto;display:block}
+  /* the print hangs centred over the sofa; its bottom edge sits at 47% of the photo height.
+     widths are the framed outer size, scaled so the 78-inch sofa is 63% of the photo width */
+  .print{position:absolute;left:50.2%;bottom:51.5%;transform:translateX(-50%);transition:width .4s var(--ease)}
+  .print img{width:100%;aspect-ratio:11/14;object-fit:cover}
+  .frame{background:var(--bone);box-shadow:0 14px 26px -8px rgba(35,41,46,.45),0 2px 4px rgba(35,41,46,.25)}
+  .room[data-frame="walnut"] .frame{border:.55vw solid #3B2A1D;padding:9%}
+  .room[data-frame="natural"] .frame{border:.55vw solid #C9A977;padding:9%}
+  .room[data-frame="none"] .frame{border:0;padding:0;box-shadow:0 4px 10px rgba(35,41,46,.25)}
+  @media (min-width:861px){.room[data-frame="walnut"] .frame,.room[data-frame="natural"] .frame{border-width:.32vw}}
+  .room[data-size="11x14"] .print{width:11.5%}
+  .room[data-size="16x20"] .print{width:16.5%}
+  .room[data-size="24x30"] .print{width:24.5%}
+  .room[data-frame="none"][data-size="11x14"] .print{width:8.8%}
+  .room[data-frame="none"][data-size="16x20"] .print{width:12.8%}
+  .room[data-frame="none"][data-size="24x30"] .print{width:19.2%}
+  .choices h3{margin-bottom:.4rem}
+  .choices p{margin-bottom:1.2rem}
+  fieldset{border:0;padding:0;margin:0 0 1.4rem}
+  legend{font-family:var(--display);font-weight:700;font-size:1.3rem;margin-bottom:.5rem;padding:0}
+  .chips{display:flex;flex-wrap:wrap;gap:.5rem}
+  .chips label{font-family:var(--display);font-weight:500;font-size:1.1rem;letter-spacing:.02em;border:2px solid var(--storm);padding:.45rem .9rem;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem}
+  .chips input{accent-color:var(--saddle);margin:0}
+  .chips label:has(input:checked){background:var(--storm);color:var(--bone)}
+  .chips label:has(input:focus-visible){outline:3px solid var(--saddle);outline-offset:2px}
+  .price{font-family:var(--display);font-weight:700;font-size:2.4rem;line-height:1;margin:.6rem 0 .3rem}
+  .price small{font-size:1.1rem;font-weight:500;letter-spacing:.03em;margin-left:.4rem}
+
+  /* ---------- best sellers: prints hung on a wall, not cards ---------- */
+  .sellers{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:clamp(1.5rem,4vw,3rem);align-items:end}
+  .seller{text-decoration:none}
+  .seller .hung{background:var(--bone);border:9px solid #3B2A1D;padding:7%;box-shadow:0 12px 28px rgba(35,41,46,.22);transition:transform .5s var(--ease)}
+  .seller:nth-child(2n) .hung{border-color:#C9A977}
+  .seller:hover .hung{transform:translateY(-4px)}
+  .seller img{aspect-ratio:11/14;object-fit:cover;width:100%}
+  .seller .meta{margin-top:1rem;display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+  .seller .meta strong{font-family:var(--display);font-weight:700;font-size:1.35rem;line-height:1.1}
+  .seller .meta span{font-family:var(--display);font-weight:500;font-size:1.1rem;white-space:nowrap}
+  .sellers-foot{margin-top:2.5rem}
+
+  /* ---------- limited editions ---------- */
+  .edition{background:var(--sage);color:var(--bone)}
+  .edition-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+  @media (max-width:860px){.edition-grid{grid-template-columns:1fr}}
+  .edition img{aspect-ratio:4/5;object-fit:cover;width:100%;height:auto}
+  .counter{font-family:var(--display);font-weight:700;font-size:clamp(5rem,12vw,9rem);line-height:.9;letter-spacing:-.03em}
+  .counter small{display:block;font-size:1.4rem;font-weight:500;letter-spacing:.03em;margin-top:1rem;line-height:1.2}
+  .edition ul{list-style:none;padding:0;margin:1.2rem 0 1.8rem;max-width:var(--measure)}
+  .edition li{padding:.6rem 0;border-top:1px solid rgba(244,240,231,.3)}
+
+  /* ---------- gifts ---------- */
+  .gift-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+  @media (max-width:860px){.gift-grid{grid-template-columns:1fr}}
+  .cutoff{border:2px solid var(--storm);padding:1.4rem 1.6rem;margin-top:1.5rem;max-width:34rem}
+  .cutoff strong{font-family:var(--display);font-weight:700;font-size:1.5rem;display:block;line-height:1.1}
+  .cutoff p{margin:.4rem 0 0}
+  .gift-list{list-style:none;margin:0;padding:0}
+  .gift-list li{display:grid;grid-template-columns:7rem 1fr;gap:1.2rem;align-items:center;padding:1.1rem 0;border-top:1px solid var(--dust-deep)}
+  .gift-list li:last-child{border-bottom:1px solid var(--dust-deep)}
+  .gift-list img{width:7rem;aspect-ratio:1;object-fit:cover}
+  .gift-list strong{font-family:var(--display);font-weight:700;font-size:1.35rem;display:block;line-height:1.1}
+  .gift-list p{margin:.2rem 0 0;font-size:.98rem}
+
+  /* ---------- the horses and the woman behind the camera ---------- */
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+  @media (max-width:860px){.story-grid{grid-template-columns:1fr}}
+  .herd{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1.6rem}
+  .herd figure{margin:0}
+  .herd img{aspect-ratio:3/4;object-fit:cover;width:100%}
+  .herd figcaption{font-family:var(--display);font-weight:700;font-size:1.25rem;margin-top:.5rem;line-height:1.1}
+  .herd figcaption small{display:block;font-weight:500;font-size:.95rem;font-family:var(--body);font-style:italic}
+  .story-photo{aspect-ratio:4/5;object-fit:cover;width:100%}
+  .story h2{margin-bottom:1rem}
+
+  /* ---------- letters from the pasture (email) ---------- */
+  .letters{background:var(--storm);color:var(--bone)}
+  .letters-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:center}
+  @media (max-width:860px){.letters-grid{grid-template-columns:1fr}}
+  .letters p{color:#D6CFC2}
+  .signup{display:grid;gap:.6rem;max-width:30rem}
+  .signup label{font-family:var(--display);font-weight:500;font-size:1.1rem;letter-spacing:.03em}
+  .signup input[type=email]{font:inherit;font-size:1.05rem;padding:.85rem 1rem;border:2px solid var(--bone);background:transparent;color:var(--bone);width:100%}
+  .signup input::placeholder{color:#9BA3A8}
+  .signup .btn{justify-self:start}
+  .signup small{color:#9BA3A8;font-size:.9rem}
+
+  /* ---------- footer ---------- */
+  footer{padding-block:2.5rem 3rem;border-top:1px solid var(--dust-deep);font-size:.95rem}
+  .foot-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem 3rem}
+  footer ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:1.4rem}
+  footer a{text-decoration:none;font-family:var(--display);font-weight:500;font-size:1.1rem;letter-spacing:.03em}
+  footer a:hover{color:var(--saddle)}
+  .fineprint{margin-top:1.2rem;color:#5B6268;max-width:none}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="wrap">
+  <div class="bar">
+    <a class="brandmark" href="#top" aria-label="Wild &amp; Mane home">
+      <!-- a brand iron, not a logo: swap the letter for her real initial or mark -->
+      <svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="24" cy="24" r="19"/>
+        <path d="M12 18 L16 31 L21 20 L26 31 L30 18 M12 36 L16 23 L21 32 L26 23 L30 36" stroke-width="2.6"/>
+      </svg>
+      <span>Wild <em>&amp;</em> Mane</span>
+    </a>
+    <nav aria-label="Main">
+      <button class="menu-btn" aria-expanded="false" aria-controls="menu" onclick="toggleMenu(this)">Menu</button>
+      <ul id="menu">
+        <li><a href="#shop">Shop prints</a></li>
+        <li><a href="#editions">Editions</a></li>
+        <li><a href="#gifts">Gift guide</a></li>
+        <li><a href="#horses">The horses</a></li>
+        <li><a href="[ETSY SHOP URL]">Cart</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<!-- ===== HERO ===== -->
+<section class="hero" id="top" aria-label="Introduction">
+  <img src="images/p1.jpg" alt="A cowgirl in a red shirt leaning into a barrel turn on a bay horse, hat brim hiding her face." fetchpriority="high">
+  <div class="hero-inner wrap">
+    <p class="hero-kicker">Faceless western photography from Florissant, Colorado</p>
+    <h1><span>Wild</span><span><span class="amp">&amp;</span>free.</span></h1>
+    <div class="hero-sub">
+      <p>Untamed beauty, shot on real Colorado ground with real horses and a woman who rides them. No face in the frame, so the one you picture is your own. Never AI.</p>
+      <div class="hero-cta">
+        <a class="btn btn--light" href="#shop">Shop prints</a>
+        <a class="btn btn--ghost" style="color:var(--bone);border-color:var(--bone)" href="#gifts">Holiday gift guide</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROOF ===== -->
+<section class="proof" aria-labelledby="proof-h">
+  <h2 id="proof-h" class="sr-only" style="position:absolute;left:-9999px">How you can tell it's real</h2>
+  <div class="proof-grid">
+    <div class="proof-item">
+      <img src="images/edition.jpg" alt="A grey horse looking over a fence rail.">
+      <div><strong>Horses with names</strong><p>[HORSE NAME], [HORSE NAME] and [HORSE NAME] live on her place in Florissant. Meet them below.</p></div>
+    </div>
+    <div class="proof-item">
+      <img src="images/golden.jpg" alt="Low sun through pines onto dry grass.">
+      <div><strong>Land you can stand on</strong><p>Every frame is shot on real ground in Teller County. Ask her where, and she'll tell you.</p></div>
+    </div>
+    <div class="proof-item">
+      <img src="images/boots.jpg" alt="A pair of worn leather boots on a plank floor.">
+      <div><strong>A camera, not a prompt</strong><p>Photographed on a [CAMERA], edited lightly, never generated. Behind-the-scenes in every edition.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THE COLLECTION ===== -->
+<section class="wrap" id="shop" aria-labelledby="shop-h">
+  <div class="intro">
+    <h2 id="shop-h">The collection</h2>
+    <p>Four moods, one way of seeing. Backs turned, hat brims down, light doing the talking. Every print comes unframed or framed, in three sizes.</p>
+  </div>
+  <div class="moods">
+    <a class="mood m1" href="[ETSY SHOP URL]">
+      <img src="images/golden.jpg" alt="Late light coming through pine trees onto a meadow." loading="lazy">
+      <span class="tag">Golden hour<small>Last light on the high plains</small></span>
+    </a>
+    <a class="mood m2" href="[ETSY SHOP URL]">
+      <img src="images/bw.jpg" alt="A white horse's head and ear in black and white." loading="lazy">
+      <span class="tag">Black &amp; white<small>Weather, grain and quiet</small></span>
+    </a>
+    <a class="mood m3" href="[ETSY SHOP URL]">
+      <img src="images/p4.jpg" alt="A rider on a mountain trail under rolling cloud." loading="lazy">
+      <span class="tag">Ranch life<small>Work, trail and open gate</small></span>
+    </a>
+    <a class="mood m4" href="[ETSY SHOP URL]">
+      <img src="images/sisters.jpg" alt="Two horses standing head to head on open range below mountains." loading="lazy">
+      <span class="tag">Sisterhood<small>Riding out together</small></span>
+    </a>
+  </div>
+</section>
+
+<!-- ===== ON THE WALL ===== -->
+<section class="wall" aria-labelledby="wall-h">
+  <div class="wrap wall-grid">
+    <div class="room" id="room" data-frame="walnut" data-size="16x20" aria-live="polite">
+      <img class="room-photo" src="images/wall.jpg" alt="A living room with a grey sofa against a plain wall and a wood floor.">
+      <div class="print">
+        <div class="frame"><img src="images/p2.jpg" alt="Preview of the print on a wall, with the frame and size you chose."></div>
+      </div>
+    </div>
+    <div class="choices">
+      <h2 id="wall-h">See it on your wall</h2>
+      <p>Pick a size and a finish. The sofa is a standard six and a half feet, so what you see is about what you get.</p>
+      <fieldset>
+        <legend>Size</legend>
+        <div class="chips">
+          <label><input type="radio" name="size" value="11x14" onchange="setRoom()"> 11 × 14</label>
+          <label><input type="radio" name="size" value="16x20" checked onchange="setRoom()"> 16 × 20</label>
+          <label><input type="radio" name="size" value="24x30" onchange="setRoom()"> 24 × 30</label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Finish</legend>
+        <div class="chips">
+          <label><input type="radio" name="frame" value="none" onchange="setRoom()"> Unframed print</label>
+          <label><input type="radio" name="frame" value="walnut" checked onchange="setRoom()"> Dark walnut frame</label>
+          <label><input type="radio" name="frame" value="natural" onchange="setRoom()"> Natural oak frame</label>
+        </div>
+      </fieldset>
+      <div class="price" id="price">$119<small>framed 16 × 20</small></div>
+      <p>Prints ship in [X]–[X] business days. Framed prints arrive ready to hang. Local pickup in Florissant for hand-framed work.</p>
+      <a class="btn" href="[ETSY SHOP URL]">Choose a print</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BEST SELLERS ===== -->
+<section class="wrap" aria-labelledby="sellers-h">
+  <div class="intro">
+    <h2 id="sellers-h">Most hung</h2>
+    <p>The ones that keep leaving the shop. Each available unframed from $38, or framed from $119.</p>
+  </div>
+  <div class="sellers">
+    <a class="seller" href="[ETSY SHOP URL]">
+      <div class="hung"><img src="images/sisters.jpg" alt="Two horses head to head on open range, framed in dark walnut." loading="lazy"></div>
+      <div class="meta"><strong>[Print title]</strong><span>From $38</span></div>
+    </a>
+    <a class="seller" href="[ETSY SHOP URL]">
+      <div class="hung"><img src="images/p2.jpg" alt="A horse's muzzle in close-up, black and white, framed in oak." loading="lazy"></div>
+      <div class="meta"><strong>[Print title]</strong><span>From $38</span></div>
+    </a>
+    <a class="seller" href="[ETSY SHOP URL]">
+      <div class="hung"><img src="images/p3.jpg" alt="A palomino in morning fog, framed in dark walnut." loading="lazy"></div>
+      <div class="meta"><strong>[Print title]</strong><span>From $38</span></div>
+    </a>
+    <a class="seller" href="[ETSY SHOP URL]">
+      <div class="hung"><img src="images/p4.jpg" alt="A rider on a mountain trail in cloud, framed in oak." loading="lazy"></div>
+      <div class="meta"><strong>[Print title]</strong><span>From $38</span></div>
+    </a>
+  </div>
+  <div class="sellers-foot"><a class="link" href="[ETSY SHOP URL]">See every print in the shop</a></div>
+</section>
+
+<!-- ===== LIMITED EDITIONS ===== -->
+<section class="edition" id="editions" aria-labelledby="ed-h">
+  <div class="wrap edition-grid">
+    <div>
+      <h2 id="ed-h">[Edition title]</h2>
+      <div class="counter">[X]<small>of [25] remaining</small></div>
+      <ul>
+        <li>Printed once, in an edition of [25]. When they're gone, the file is retired.</li>
+        <li>Signed and numbered by hand on the front margin.</li>
+        <li>Hand framed in Florissant, with a signed certificate and the story of the day it was shot.</li>
+        <li>[SIZE] on archival cotton rag paper.</li>
+      </ul>
+      <a class="btn btn--light" href="[EDITION URL]">Reserve a number</a>
+    </div>
+    <img src="images/edition.jpg" alt="A grey horse with a pale forelock looking over a fence rail.">
+  </div>
+</section>
+
+<!-- ===== GIFTS ===== -->
+<section class="wrap" id="gifts" aria-labelledby="gift-h">
+  <div class="gift-grid">
+    <div>
+      <h2 id="gift-h">For the horse girl in your life</h2>
+      <p>You know the one. She'd rather be in the barn. A print of real horses on real land says you noticed, and it beats another mug.</p>
+      <div class="cutoff">
+        <strong>Order by [DATE] for Christmas delivery</strong>
+        <p>Framed prints need a little longer: order by [DATE]. Local pickup in Florissant through [DATE].</p>
+      </div>
+    </div>
+    <ul class="gift-list">
+      <li>
+        <img src="images/p3.jpg" alt="" loading="lazy">
+        <div><strong>Under $50</strong><p>An unframed 11 × 14 she can slip into her own frame. Ships flat in a stiff mailer.</p><a class="link" href="[ETSY SHOP URL]">Shop unframed</a></div>
+      </li>
+      <li>
+        <img src="images/about2.jpg" alt="" loading="lazy">
+        <div><strong>Ready to hang</strong><p>Framed 16 × 20 in walnut or oak, with hanging hardware on. Open the box, find a nail.</p><a class="link" href="[ETSY SHOP URL]">Shop framed</a></div>
+      </li>
+      <li>
+        <img src="images/edition.jpg" alt="" loading="lazy">
+        <div><strong>The big one</strong><p>A signed, numbered edition with a certificate. For the woman who already has the saddle.</p><a class="link" href="#editions">See the edition</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== THE HORSES / HER STORY ===== -->
+<section class="wrap story" id="horses" aria-labelledby="story-h">
+  <div class="story-grid">
+    <div>
+      <h2 id="story-h">Behind every frame, a horse she knows by name</h2>
+      <p>Trisha has kept horses in Florissant since 2026. She photographs the women she rides with on the land they ride, in the hour after the wind drops. The faces stay out of the frame on purpose. The light, the dust and the horses are the point.</p>
+      <p>[A line or two in her own words about why she started, and what she wants a print to feel like on someone's wall.]</p>
+      <div class="herd">
+        <figure><img src="images/about1.jpg" alt="A bay horse looking through a white fence." loading="lazy"><figcaption>[HORSE NAME]<small>[breed], [age]</small></figcaption></figure>
+        <figure><img src="images/about2.jpg" alt="A pinto horse with a flaxen forelock, close up." loading="lazy"><figcaption>[HORSE NAME]<small>[breed], [age]</small></figcaption></figure>
+        <figure><img src="images/edition.jpg" alt="A grey horse looking over a fence rail." loading="lazy"><figcaption>[HORSE NAME]<small>[breed], [age]</small></figcaption></figure>
+      </div>
+    </div>
+    <img class="story-photo" src="images/about2.jpg" alt="A pinto horse with a flaxen forelock in a green field." loading="lazy">
+  </div>
+</section>
+
+<!-- ===== EMAIL ===== -->
+<section class="letters" aria-labelledby="letters-h">
+  <div class="wrap letters-grid">
+    <div>
+      <h2 id="letters-h">Letters from the pasture</h2>
+      <p>A note every few weeks: what the light's been doing, which horse is being a pain, and new prints before they hit the shop. No daily sales emails. Your first print is 10% off.</p>
+    </div>
+    <form class="signup" action="[EMAIL FORM ACTION]" method="post">
+      <label for="email">Your email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+      <button class="btn btn--light" type="submit">Send me the letters</button>
+      <small>One email every few weeks. Unsubscribe any time.</small>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <div class="foot-grid">
+    <ul>
+      <li><a href="[ETSY SHOP URL]">Etsy shop</a></li>
+      <li><a href="[INSTAGRAM URL]">Instagram</a></li>
+      <li><a href="[PINTEREST URL]">Pinterest</a></li>
+      <li><a href="[SHIPPING PAGE URL]">Shipping &amp; returns</a></li>
+      <li><a href="mailto:[EMAIL]">Contact</a></li>
+    </ul>
+    <p style="margin:0">Wild &amp; Mane, Florissant, Colorado</p>
+  </div>
+  <p class="fineprint">Every image on this site is a photograph made by Trisha with a camera, with signed releases from every rider. No AI-generated imagery is used anywhere. © 2026 Wild &amp; Mane.</p>
+</footer>
+
+<script>
+  function toggleMenu(btn){
+    var m=document.getElementById('menu');var open=m.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+  }
+  // On-the-wall preview. Prices: change these numbers once hers are final.
+  var prices={ "11x14":{none:38, walnut:119, natural:119},
+               "16x20":{none:"[PRICE]", walnut:119, natural:119},
+               "24x30":{none:"[PRICE]", walnut:"[PRICE]", natural:"[PRICE]"} };
+  function setRoom(){
+    var size=document.querySelector('input[name=size]:checked').value;
+    var frame=document.querySelector('input[name=frame]:checked').value;
+    var room=document.getElementById('room');
+    room.dataset.size=size; room.dataset.frame=frame;
+    var p=prices[size][frame]; var label=(frame==='none'?'unframed ':'framed ')+size.replace('x',' × ');
+    document.getElementById('price').innerHTML=(typeof p==='number'?'$'+p:p)+'<small>'+label+'</small>';
+  }
+</script>
+</body>
+</html>
